@@ -62,7 +62,15 @@ Asynchronous Example:
 ## Advanced Usage
 
 ``` swift
-
+        let request = YourRequestModel(msg: "Hello", description: "World", version: "1.2.3")
+        
+        let result = httpSync("https://example.com/api/v1/", 
+                              "POST", 
+                              Data(encode: request),
+                              ["Content-Type":"application/json",
+                               "Authorization":"Bearer UkGaHu8nT4O05XgoEhA50oPbmWxSI0"],
+                              timeout: 120
+                            )?.json() as TestResult?
 ```
 
 ## Other Features

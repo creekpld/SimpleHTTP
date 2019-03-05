@@ -4,24 +4,6 @@
 //
 //  Created by Philipp Dylong on 27.02.19.
 //  Copyright © 2019 Philipp Dylong. All rights reserved.
-//
-// Swift HTTP Request library with fluent API
-//
-// Examples:
-//
-// ˋˋˋswift
-//  let result = httpSync("https://example.com").json() as YourResultModel?
-//
-//  httpAsync("https://example.com"){
-//    ( data, result, error) as
-//    ...code...
-//  })
-//
-//
-//  let result: SomeResult? = httpSync("https://example.com", "POST", someData ).json()
-// ˋˋˋ
-
-
 import Foundation
 
 public func httpSync(_ url: String,
