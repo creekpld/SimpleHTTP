@@ -70,7 +70,7 @@ Asynchronous Example:
                               ["Content-Type":"application/json",
                                "Authorization":"Bearer UkGaHu8nT4O05XgoEhA50oPbmWxSI0"],
                               timeout: 120
-                            )?.json() as TestResult?
+                            )?.json() as YourResultModel?
 ```
 
 ## Other Features
@@ -83,7 +83,7 @@ Asynchronous Example:
 ## TODO
 
 - [ ] Code Comments / Documentation
-- [ ] Advanced Usage Examples
+- [x] Advanced Usage Examples
 - [ ] Tests
 - [ ] CI
 
