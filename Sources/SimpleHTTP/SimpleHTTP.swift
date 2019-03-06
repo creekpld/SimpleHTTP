@@ -1,11 +1,30 @@
+//===------------------------------------------------------------------------------------------===//
 //
-//  HTTP.swift
-//  A simple library to make HTTP Requests using URLRequest and Codable Data.
+// SimpleHTTP.swift
 //
-//  Created by Philipp Dylong on 27.02.19.
-//  Copyright © 2019 Philipp Dylong. All rights reserved.
+// A simple library to make HTTP Requests using URLRequest and Codable Data.
+//
+// Created by Philipp Dylong on 27.02.2019
+// Copyright © 2019 Philipp Dylong. All rights reserved.
+//
+// See https://github.com/creekpld/SimpleHTTP
+//
+//===------------------------------------------------------------------------------------------===//
+
 import Foundation
 
+/**
+    Synchronous HTTP Request
+ 
+    - Parameters:
+        - url: The URL for the request.
+        - method: The HTTP request method of the receiver.
+        - body: This data is sent as the message body of the request, as in an HTTP POST request.
+        - allHTTPHeaderFields: A dictionary containing all the HTTP header fields of the receiver.
+        - timeout: The timeout interval for the request. Defaults to 60.0 Seconds
+
+ - Returns: The Data received by the URLRequest
+**/
 public func httpSync(_ url: String,
                      _ method: String = "GET",
                      _ body: Data? = nil,
@@ -39,6 +58,19 @@ public func httpSync(_ url: String,
     return responseData
 }
 
+/**
+ Asynchronous HTTP Request
+ 
+ - Parameters:
+ - url: The URL for the request.
+ - method: The HTTP request method of the receiver.
+ - body: This data is sent as the message body of the request, as in an HTTP POST request.
+ - allHTTPHeaderFields: A dictionary containing all the HTTP header fields of the receiver.
+ - timeout: The timeout interval for the request. Defaults to 60.0 Seconds
+ - completion: The default NSURLSession completionHandler
+ 
+ - Returns: Void
+ **/
 public func httpAsync(_ url: String,
                       _ method: String = "GET",
                       _ body: Data? = nil,
@@ -59,8 +91,30 @@ public func httpAsync(_ url: String,
         task.resume()
 }
 
+/**
+ Data convenience routines deliver a way to Encode and Decode JSON from this Data Object
+ with a custom JSONEncoder or JSONDecoder to or from a Generic Type that implements
+ the Codable protocol.
+ **/
 extension Data {
 
+    /**
+     Data convenience method to Decode JSON Data to a Object that implements the Codable protocol.
+     The Default Date Formater is set to iso8601, GMT-0, yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
+     
+     Usage:
+     ```
+     struct YourResultModel: Codable {
+        let message: String
+     }
+     
+     let data = "{\"message\":\"Hello, World!\"}".data(using: .utf8)!
+     
+     let result = data.json()! as YourResultModel
+     
+     print(result.message) // Hello, World!
+     ```
+     **/
     func json<T: Codable>() -> T? {
         var decoded: T? = nil
         do {
