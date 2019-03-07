@@ -102,7 +102,7 @@ extension Data {
      Data convenience method to Decode JSON Data to a Object that implements the Codable protocol.
      The Default Date Formater is set to iso8601, GMT-0, yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
      
-     Usage:
+     Data Decoder Usage:
      ```
      struct YourResultModel: Codable {
         let message: String
@@ -125,10 +125,38 @@ extension Data {
         return decoded
     }
     
+    /**
+     Data Encoding with Any Encodable Type.
+     
+     Usage:
+     ```
+     let obj = YourTestModel(message: "Hello, World!")
+     
+     let data = Data(encodable: obj)!
+     
+     let jsonString = String(data: data, encoding: .utf8)!
+     
+     print(jsonString) // "{\"message\":\"Hello, World!\"}"
+     ```
+     **/
     init?<T: Encodable>(encodable: T) {
         self.init(encode: encodable, with: customJSONEncoder())
     }
     
+    /**
+     Data Encoding Any Encodable Type and a Custom Encoder.
+     
+     Usage:
+     ```
+     let obj = YourTestModel(message: "Hello, World!")
+     
+     let data = Data(encodable: obj, with: yourCustomJSONEncoder())!
+     
+     let jsonString = String(data: data, encoding: .utf8)!
+     
+     print(jsonString) // "{\"message\":\"Hello, World!\"}"
+     ```
+     **/
     init?<T: Encodable>(encode encodable: T, with encoder: JSONEncoder) {
         do {
             self = try encoder.encode(encodable)

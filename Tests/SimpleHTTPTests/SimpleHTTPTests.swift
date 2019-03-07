@@ -2,23 +2,37 @@ import XCTest
 @testable import SimpleHTTP
 
 final class SimpleHTTPTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        //XCTAssertEqual(SimpleHTTP().text, "Hello, World!")
-        struct YourResultModel: Codable {
-            let message: String
-        }
+    
+    struct TestModel: Codable {
+        let message: String
+    }
+    
+    func testJSONDecoder() {
         
         let data = "{\"message\":\"Hello, World!\"}".data(using: .utf8)!
         
-        let result = data.json()! as YourResultModel
+        let result = data.json()! as TestModel
         
         print(result.message) // Hello, World!
+        
+        XCTAssertEqual(result.message, "Hello, World!")
+    }
+    
+    func testJSONEncoder() {
+        
+        let obj = TestModel(message: "Hello, World!")
+        
+        let data = Data(encodable: obj)!
+        
+        let jsonString = String(data: data, encoding: .utf8)!
+        
+        print(jsonString) // "{\"message\":\"Hello, World!\"}"
+        
+        XCTAssertEqual(jsonString, "{\"message\":\"Hello, World!\"}")
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testJSONDecoder", testJSONDecoder),
+        ("testJSONEncoder", testJSONEncoder),
     ]
 }
