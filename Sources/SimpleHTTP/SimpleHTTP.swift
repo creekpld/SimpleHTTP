@@ -2,12 +2,16 @@
 //
 // SimpleHTTP.swift
 //
+// Version 1.0.0 
+//
 // A simple library to make HTTP Requests using URLRequest and Codable Data.
 //
 // Created by Philipp Dylong on 27.02.2019
-// Copyright © 2019 Philipp Dylong. All rights reserved.
-//
-// See https://github.com/creekpld/SimpleHTTP
+// Copyright © 2019 Philipp Dylong and the SimpleHTTP project authors.
+// Licensed under The MIT License
+// 
+// See https://github.com/creekpld/SimpleHTTP/blob/master/LICENSE for license information
+// See https://github.com/creekpld/SimpleHTTP/graphs/contributors for the list of Swift project authors
 //
 //===------------------------------------------------------------------------------------------===//
 

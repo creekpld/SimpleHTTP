@@ -17,7 +17,7 @@ This Swift library is written in swift version 4.0
 
 ### Import Source File
 
-You can just drop the Source File under [SimpleHTTP.swift](Sources/SimpleHTTP/SimpleHTTP.swift) into your Project.
+You can just drop the Source File [SimpleHTTP.swift](Sources/SimpleHTTP/SimpleHTTP.swift) into your Project.
 
 ### Swift Package Manager
 
@@ -74,13 +74,6 @@ Asynchronous Example:
                               timeout: 120
                             )?.json() as YourResultModel?
 ```
-
-## Other Features
-
-``` swift
-
-```
-
 
 ## TODO
 
