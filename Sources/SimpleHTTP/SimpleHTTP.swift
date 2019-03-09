@@ -167,6 +167,8 @@ extension Data {
     }
 }
 
+// Custom JSON Coder Date coding Strategy with Linux Support.
+// Yoinked straight out of quicktype ;)
 fileprivate func customJSONDecoder() -> JSONDecoder {
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .custom({ (decoder) -> Date in

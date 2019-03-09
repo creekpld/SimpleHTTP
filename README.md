@@ -6,8 +6,6 @@ A simple library to make HTTP Requests using URLRequest and Codable Data.
 
 This Swift library is written in swift version 4.0
 
-:construction: Work in Progress.
-
 ## Features
 
 - [x] Uses only Foundations URLRequest
@@ -17,7 +15,11 @@ This Swift library is written in swift version 4.0
 
 ## Installation
 
-Install it with the Swift Package Manager.
+### Import Source File
+
+You can just drop the Source File under [SimpleHTTP.swift](Sources/SimpleHTTP/SimpleHTTP.swift) into your Project.
+
+### Swift Package Manager
 
 ``` swift
 // swift-tools-version:4.0
@@ -82,9 +84,9 @@ Asynchronous Example:
 
 ## TODO
 
-- [ ] Code Comments / Documentation
+- [x] Code Comments / Documentation
 - [x] Advanced Usage Examples
-- [ ] Tests
+- [ ] Some Tests
 - [ ] CI
 
 ## License
